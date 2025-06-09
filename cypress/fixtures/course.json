@@ -1,0 +1,33 @@
+{
+  "courseName": "Automation Princy",
+  "courseDescription": "This is Automation Testing description that includes various testing subjects like selenium, python, javascript, testng, cypress, playwright etc",
+  "courseObjectives": "The objective of this course is to provide basic understanding of automation testing.",
+  "youtubeUrl": "https://youtu.be/qR20KF7wxSU?si=ENCYniNGZEoYzIq3",
+  "subjects": [
+    {
+      "name": "selenium",
+      "description": "this is the description of selenium testing"
+    },
+    {
+      "name": "cypress",
+      "description": "this is the description of cypress testing"
+    }
+  ],
+  "topics": [
+    {
+      "subject": "selenium",
+      "name": "locators",
+      "description": "this is the description topic 1"
+    },
+    {
+      "subject": "cypress",
+      "name": "assertions",
+      "description": "this is the description of topic 2"
+    },
+    {
+      "subject": "cypress",
+      "name": "web driver",
+      "description": "this is the description of topic 3"
+    }
+  ]
+}

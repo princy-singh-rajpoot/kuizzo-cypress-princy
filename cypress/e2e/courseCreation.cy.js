@@ -1,32 +1,53 @@
 describe("Kuizzo Course Creation", () => {
+  let courseData;
+
   before(() => {
-    cy.login(); // Use the custom command to login once before tests
+    cy.fixture("course").then((data) => {
+      courseData = data;
+    });
+    cy.login(); // custom login command
   });
 
-  it("Creates a course with subjects and topics", () => {
+  it("Creates a new course only if it doesn't already exist", () => {
+    // Open sidebar
     cy.get(
       "div.flex.justify-center.items-center.py-\\[1\\.62rem\\].gap-\\[0\\.81rem\\] svg"
     )
       .last()
       .click();
-    cy.contains("div", "Create New Courses").click();
 
-    cy.get('input[placeholder="Enter Course Name"]').type("Automation Testing");
-    cy.get('textarea[placeholder="Enter Course Description"]').type(
-      "This is Automation Testing description that includes various testing subjects like selenium,python,javascript,testng,cypress,playwright etc"
-    );
-    cy.get('textarea[placeholder="Enter Course Objectives"]').type(
-      "the objective of this course is to provide basic understanding of automation testing."
-    );
-    cy.get('input[name="youtubeUrl"]').type(
-      "https://youtu.be/qR20KF7wxSU?si=ENCYniNGZEoYzIq3"
-    );
+    // Go to Course List
+    cy.contains("div", "Course List").should("be.visible").click();
 
-    // Place this file in cypress/fixtures
-    const fileName = "Automation Testing.pdf";
-    cy.get('input[type="file"]').attachFile(fileName, { force: true });
+    // Wait for Course List to load
+    cy.contains("Course List").parent().find("div");
 
-    // submit
-    cy.get('button[type="submit"]').click();
+    // Check if the course exists in the list items
+    cy.get("tr").then(($rows) => {
+      const courseExists = [...$rows].some((row) => {
+        const courseNameElement = row.querySelector(
+          "td div.flex.mobile\\:flex-col.mobile\\:flex-wrap.items-center.mobile\\:pl-\\[10px\\].pl-\\[20px\\].pr-5.gap-\\[0\\.5rem\\].mobile\\:justify-center.py-\\[10px\\] > div > p"
+        );
+        return (
+          courseNameElement &&
+          courseNameElement.innerText.includes(courseData.courseName)
+        );
+      });
+
+      if (courseExists) {
+        cy.log(`Course already exists: ${courseData.courseName}`);
+      } else {
+        cy.log(`Creating course: ${courseData.courseName}`);
+
+        // Click hamburger menu again before creating course, if needed
+        cy.get(
+          "div.flex.justify-center.items-center.py-\\[1\\.62rem\\].gap-\\[0\\.81rem\\] svg"
+        )
+          .last()
+          .click();
+
+        cy.createCourse(courseData);
+      }
+    });
   });
 });
