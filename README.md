@@ -8,24 +8,6 @@ This repository contains Cypress end-to-end test cases written for the Kuizzo pl
 - **JavaScript**
 - **cypress-file-upload** plugin
 
-## 📁 Folder Structure
-kuizzo-cypress-princy/
-│
-├── cypress/
-│ ├── e2e/ #Test cases
-│ │ └── instructorCreation.cy.js
-│ ├── fixtures/ #Test data and files
-│ │ ├── course.json
-│ │ ├── Automation Testing.pdf
-│ │ └── princy.png
-│ └── support/
-│ ├── commands.js #Custom Cypress commands
-│ └── e2e.js
-│
-├── cypress.config.js # Cypress configuration
-├── package.json
-├── README.md
-
 ## 🚀 Setup Instructions
 
 ### 1. Clone the repo
