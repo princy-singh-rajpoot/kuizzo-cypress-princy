@@ -11,20 +11,19 @@ This repository contains Cypress end-to-end test cases written for the Kuizzo pl
 ## 🚀 Setup Instructions
 
 ### 1. Clone the repo
-git clone https://github.com/princy-singh-rajpoot/kuizzo-cypress-princy.git
-    cd kuizzo-cypress-princy
-    npm install
+1. git clone https://github.com/princy-singh-rajpoot/kuizzo-cypress-princy.git
+2. cd kuizzo-cypress-princy
+3. npm install
 
 ### 2. Run Cypress tests - 
-    npx cypress open
-    # or headless
-    npx cypress run
+- npx cypress open
+- for headless: npx cypress run
 
 ### 3. ✅ Test Coverage
- Login functionality
- Course creation
- File upload (PNG, PDF)
- Instructor assignment
+1. Login functionality
+2. Course creation
+3. File upload (PNG, PDF)
+4. Instructor assignment
 
 ### 4. Fixtures
 Ensure your test files (e.g. princy.png, Automation Testing.pdf) are placed inside the cypress/fixtures/ folder.
